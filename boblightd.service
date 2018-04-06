@@ -1,0 +1,16 @@
+[Unit]
+Description=boblightd
+Documentation=https://github.com/guh/guh/wiki
+After=network.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/boblightd
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
+
