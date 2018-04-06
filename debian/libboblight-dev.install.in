@@ -1,3 +1,4 @@
+usr/lib/@DEB_HOST_MULTIARCH@/libboblight.so
 usr/lib/@DEB_HOST_MULTIARCH@/libboblight.la
 usr/lib/@DEB_HOST_MULTIARCH@/libboblight.a
 usr/include/libboblight/boblight.h
