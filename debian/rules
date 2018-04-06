@@ -1,7 +1,25 @@
 #!/usr/bin/make -f
 
-%:
-	dh $@
+
+DPKG_EXPORT_BUILDFLAGS = 1
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+include /usr/share/dpkg/buildflags.mk
+
+PREPROCESS_FILES := $(wildcard debian/*.in)
+
+$(PREPROCESS_FILES:.in=): %: %.in
+	sed 's,/@DEB_HOST_MULTIARCH@,$(DEB_HOST_MULTIARCH:%=/%),g' $< > $@
 
 override_dh_auto_configure:
 	dh_auto_configure -- --without-portaudio --without-x11
+
+override_dh_install: $(PREPROCESS_FILES:.in=)
+	dh_install --fail-missing
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf $(PREPROCESS_FILES:.in=)
+
+%:
+	dh $@

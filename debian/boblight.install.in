@@ -1,0 +1,5 @@
+usr/bin/boblightd
+usr/bin/boblight-constant
+boblight.conf /etc/
+usr/lib/@DEB_HOST_MULTIARCH@/libboblight.so.0
+usr/lib/@DEB_HOST_MULTIARCH@/libboblight.so

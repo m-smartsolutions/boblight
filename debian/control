@@ -1,14 +1,24 @@
 Source: boblight
 Section: utils
-Priority: options
+Priority: optional
 Maintainer: Michael Zanetti <michael.zanetti@guh.io>
-Build-depends: debhelper (>= 0.0.0),
+Standards-Version: 3.9.7
+Build-depends: debhelper (>= 9.0.0),
+               dpkg-dev (>= 1.16.1~),
                libusb-1.0-0-dev,
-Standards-Version: 3.9.3
 
 Package: boblight
 Architecture: any
+Multi-Arch: same
 Depends: ${shlibs:Depends},
          ${misc:Depends},
 Description: Boblight, a daemon for controlling ambilights
   A daemon to control ambilights and moodlights
+
+Package: boblight-dev
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends},
+         ${misc:Depends},
+Description: Boblight, a daemon for controlling ambilights - development files
+  A daemon to control ambilights and moodlights - development files
